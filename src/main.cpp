@@ -2,6 +2,7 @@
 #include "header/UltraSonic.h"
 
 UltraSonic sonic1 = UltraSonic();
+UltraSonic sonic2 = UltraSonic();
 
 int inputPin = 6;
 int pirState = LOW;
@@ -12,15 +13,18 @@ void setup()
   /* Initialise le port série */
   Serial.begin(9600);
   sonic1.init(13, 12);
+  sonic2.init(2,4);
       pinMode(inputPin, INPUT);
 
 }
 
 void loop()
 {
-  Serial.print(F("Distance: "));
+  Serial.print(F("Distance détecteur 1 : "));
   Serial.println(sonic1.getDistance());
 
+  Serial.print(F("Distance détecteur 2 : "));
+  Serial.println(sonic2.getDistance());
 
     val = digitalRead(inputPin);
     if (val == HIGH)
