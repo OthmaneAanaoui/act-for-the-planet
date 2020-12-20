@@ -1,10 +1,11 @@
-#ifndef COMMON_DETECTOR
-#define COMMON_DETECTOR
+#ifndef INFRARED
+#define INFRARED
 #include "header/CommonDetector.h"
-#endif
+
 class InfraRed : public CommonDetector {
 
     public:
         InfraRed();
 };
 
+#endif

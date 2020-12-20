@@ -1,8 +1,10 @@
-#ifndef COMMON_DETECTOR
-#define COMMON_DETECTOR
+#ifndef PRESENCE
+#define PRESENCE
 #include "header/CommonDetector.h"
-#endif
+
 class Presence : public CommonDetector {
     public:
         Presence();
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef TIME_MANAGER
+#define TIME_MANAGER
+
 #include "Time.h"
 
 class TimeManager {
@@ -6,3 +9,5 @@ class TimeManager {
     public:
         TimeManager();
 };
+
+#endif

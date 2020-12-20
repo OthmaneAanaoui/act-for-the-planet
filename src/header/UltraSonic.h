@@ -1,3 +1,5 @@
+#ifndef ULTRASONIC
+#define ULTRASONIC
 #include <Arduino.h>
 
 class UltraSonic {
@@ -20,3 +22,5 @@ public:
      void init(byte trigger, byte echo);
      float getDistance();
 };
+
+#endif

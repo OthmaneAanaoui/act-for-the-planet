@@ -1,13 +1,14 @@
+#ifndef COMMON_DETECTOR
+#define COMMON_DETECTOR
+
 #include <Arduino.h>
 
-#ifndef PRESENCE_ENUM
-#define PRESENCE_ENUM
-    enum PresenceState {
-        startDetecting,
-        endDetecting,
-        betweenDetecting
-    };
-#endif
+enum PresenceState {
+    startDetecting,
+    endDetecting,
+    betweenDetecting
+};
+
 class CommonDetector {
     protected:
         int inputPin;
@@ -18,3 +19,5 @@ class CommonDetector {
         void init(byte inputPin);
         PresenceState getIsDetect();
 };
+
+#endif
