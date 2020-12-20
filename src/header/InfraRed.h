@@ -2,7 +2,9 @@
 #define COMMON_DETECTOR
 #include "header/CommonDetector.h"
 #endif
-class Presence : public CommonDetector {
+class InfraRed : public CommonDetector {
+
     public:
-        Presence();
+        InfraRed();
 };
+

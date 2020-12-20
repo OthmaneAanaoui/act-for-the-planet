@@ -10,7 +10,7 @@ public:
     /* Constantes pour le timeout */
     static const unsigned long MEASURE_TIMEOUT = 25000UL; // 25ms = ~8m à 340m/s
     /* Vitesse du son dans l'air en mm/us */
-    static const float SOUND_SPEED = (340.0 / 1000); 
+    static constexpr float SOUND_SPEED = (340.0 / 1000.0); 
 
      UltraSonic();
      byte getTriggerPin();

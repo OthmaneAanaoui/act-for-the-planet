@@ -1,20 +1,31 @@
 #include <Arduino.h>
 #include "header/UltraSonic.h"
+#include "header/Presence.h"
+#include "header/InfraRed.h"
 
 UltraSonic sonic1 = UltraSonic();
 UltraSonic sonic2 = UltraSonic();
+UltraSonic sonic3 = UltraSonic();
 
-int inputPin = 6;
-int pirState = LOW;
-int val = 0;
+Presence detectPresence = Presence();
+
+InfraRed wasteDetector1 = InfraRed();
+InfraRed wasteDetector2 = InfraRed();
+InfraRed wasteDetector3 = InfraRed();
 
 void setup()
 {
   /* Initialise le port série */
   Serial.begin(9600);
   sonic1.init(13, 12);
-  sonic2.init(2,4);
-      pinMode(inputPin, INPUT);
+  sonic2.init(11,10);
+  sonic3.init(9,8);
+
+  detectPresence.init(1);
+
+  wasteDetector1.init(2);
+  wasteDetector2.init(3);
+  wasteDetector3.init(4);
 
 }
 
@@ -26,22 +37,9 @@ void loop()
   Serial.print(F("Distance détecteur 2 : "));
   Serial.println(sonic2.getDistance());
 
-    val = digitalRead(inputPin);
-    if (val == HIGH)
-    {
-        if (pirState == LOW) {
-            Serial.println("Motion detected!");
-            pirState = HIGH;
-        }
-    }
-    else {
-        if (pirState == HIGH)
-        {
-            Serial.println("Motion ended!");
-            pirState = LOW;
-        }
-    }
-
+  if(detectPresence.getIsDetect() == PresenceState::startDetecting) {
+    Serial.println("Motion detected");
+  }
 
 
   /* Délai d'attente pour éviter d'afficher trop de résultats à la seconde */
