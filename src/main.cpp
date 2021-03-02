@@ -2,6 +2,8 @@
 #include "header/UltraSonic.h"
 #include "header/Presence.h"
 #include "header/InfraRed.h"
+#include "header/Communication.h"
+#include "header/IntervalManager.h"
 
 UltraSonic sonic1 = UltraSonic();
 UltraSonic sonic2 = UltraSonic();
@@ -13,10 +15,13 @@ InfraRed wasteDetector1 = InfraRed();
 InfraRed wasteDetector2 = InfraRed();
 InfraRed wasteDetector3 = InfraRed();
 
+Communication com = Communication();
+IntervalManager timer = IntervalManager();
+
 void setup()
 {
   /* Initialise le port série */
-  Serial.begin(9600);
+  com.init(9600);
   sonic1.init(13, 12);
   sonic2.init(11,10);
   sonic3.init(9,8);
@@ -43,6 +48,6 @@ void loop()
 
 
   /* Délai d'attente pour éviter d'afficher trop de résultats à la seconde */
-  delay(1000);
+  delay(timer.getInterval());
 }
 
