@@ -22,13 +22,13 @@ void setup()
 {
   /* Initialise le port série */
   com.init(9600);
-  sonic1.init(13, 12);
+  sonic1.init(8, 9);
   // sonic2.init(11,10);
   // sonic3.init(9,8);
 
-  detectPresence.init(1);
+  detectPresence.init(2);
 
-  wasteDetector1.init(2);
+  wasteDetector1.init(3);
   // wasteDetector2.init(3);
   // wasteDetector3.init(4);
 
