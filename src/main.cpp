@@ -46,11 +46,10 @@ void loop()
   //   Serial.println("Motion detected");
   // }
   //com.readSerialPort();
-
-  if(wasteDetector1.getIsDetect() == PresenceState::endDetecting) {
-    delay(1000);
-    com.sendData((String)sonic1.getDistance());
-  }
+  // if(wasteDetector1.getIsDetect() == PresenceState::endDetecting) {
+  //   delay(1000);
+  //   com.sendData((String)sonic1.getDistance());
+  // }
   
   //pour test à virer pour l'appli finale
   if(detectPresence.getIsDetect() == PresenceState::endDetecting) {
