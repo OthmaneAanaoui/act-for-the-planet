@@ -1,5 +1,10 @@
-#include <Arduino.h>
+#ifndef PRESENCE
+#define PRESENCE
+#include "header/CommonDetector.h"
 
-class Presence {
-
+class Presence : public CommonDetector {
+    public:
+        Presence();
 };
+
+#endif
