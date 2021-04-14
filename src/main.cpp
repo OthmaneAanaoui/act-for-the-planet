@@ -18,6 +18,8 @@ InfraRed wasteDetector1 = InfraRed();
 Communication com = Communication();
 IntervalManager timer = IntervalManager();
 
+const int BTN1 = 11;
+
 void setup()
 {
   /* Initialise le port série */
@@ -32,10 +34,12 @@ void setup()
   // wasteDetector2.init(3);
   // wasteDetector3.init(4);
 
+  pinMode(BTN1, INPUT_PULLUP);
 }
 
 void loop()
 {
+  // Serial.println((String)!digitalRead(BTN1));
   // Serial.print(F("Distance détecteur 1 : "));
   // Serial.println(sonic1.getDistance());
 
@@ -50,14 +54,21 @@ void loop()
   //   delay(1000);
   //   com.sendData((String)sonic1.getDistance());
   // }
+
+  if (!digitalRead(BTN1))
+  {
+    com.sendData((String)sonic1.getDistance());
+    delay(timer.getInterval());
+  }
   
   //pour test à virer pour l'appli finale
-  if(detectPresence.getIsDetect() == PresenceState::endDetecting) {
-    delay(1000);
-    com.sendData((String)sonic1.getDistance());
-  }
+  //if(detectPresence.getIsDetect() == PresenceState::endDetecting) {
+  //  delay(timer.getInterval());
+  //  com.sendData((String)sonic1.getDistance());
+  // }
+
 
   /* Délai d'attente pour éviter d'afficher trop de résultats à la seconde */
-  delay(timer.getInterval());
+  // delay(timer.getInterval());
 }
 
